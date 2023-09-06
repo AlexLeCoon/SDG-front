@@ -1,2 +1,2 @@
 pdfquery
-collections
+collection
