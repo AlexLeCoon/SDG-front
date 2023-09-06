@@ -11,7 +11,8 @@ st.title("Using a PDF :open_file_folder:")
 with st.form(key='params_for_api_pdf'):
     uploaded_file = st.file_uploader("Choose a file", type= 'pdf')
     if st.form_submit_button("Upload pdf"):
-        if st.form_submit_button("which SDG am I?"):
+        if uploaded_file is not None:
+        #if st.form_submit_button("which SDG am I?"):
             pdf=PDFQuery(uploaded_file)
             pdf.load()
             text_elements=pdf.pq("LTTextLineHorizontal")
@@ -58,8 +59,8 @@ with st.form(key='params_for_api_pdf'):
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-14.png")
             elif round(pred) == 16:
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
-        else:
-            st.write("None")
+        #else:
+         #   st.write("None")
 
 st.header("",divider="rainbow")
 
@@ -78,7 +79,6 @@ with st.form(key='params_for_api'):
         col1, col2, col3 = st.columns(3)
         for i in high:
             st.write(i[0]," :",round(i[1],2)*100,"%")
-            st.write(i[0][-2:])
             if i[0][-1] =="6":
                 st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png")
             if i[0][-1] =="1":
