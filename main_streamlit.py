@@ -4,13 +4,30 @@ import pandas as pd
 from pdfquery import PDFQuery
 from collections import Counter
 
+#dico = {15:"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png",
+        #1:"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9KeYUomO4E0EqXT24XUypQ.png",
+        #2:"https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-02.png",
+        #3:"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bD6Q8IDG3Ef444SAOnNiyg.png",
+        #4:"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1-A2Y3EWTX6V8ISs7zgU_Q.png",
+        #5:"https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png",
+        #6:"https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-06.png",
+        #7:"https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-07.png",
+        #8:"https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-08.png",
+        #}
 
-st.header("SDG Classifier :recycle: ",divider = "rainbow")
-st.title("Using a PDF :open_file_folder:")
+col1,col2,col3 = st.columns(3)
+with col2:
+    st.markdown("# SDG Classifier")
+with col1:
+    st.image("https://www.nicepng.com/png/full/139-1391810_sdg-logo-transparent-eng-invest-sustainable-development-goals.png",width=120)
+with col3:
+    st.image("https://www.nicepng.com/png/full/139-1391810_sdg-logo-transparent-eng-invest-sustainable-development-goals.png",width=120)
+st.header("",divider = "rainbow")
+st.markdown("## PDF :open_file_folder:")
 
 with st.form(key='params_for_api_pdf'):
     uploaded_file = st.file_uploader("Choose a file", type= 'pdf')
-    if st.form_submit_button('The best 3 SDGs the article corresponds to ?'):
+    if st.form_submit_button('3 SDGs & Proba'):
         if uploaded_file is not None:
             pdf=PDFQuery(uploaded_file)
             pdf.load()
@@ -25,8 +42,7 @@ with st.form(key='params_for_api_pdf'):
             k = Counter(prediction)
             high = k.most_common(3)
             for i in high:
-                st.write(i[0]," :",round(i[1],2)*100,"%")
-                st.write(i[0][-2:])
+                st.markdown(f"## {i[0]} :{round(i[1],2)*100}%")
                 if int(i[0][-2:]) == 5:
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png")
                 if int(i[0][-2:]) == 1:
@@ -60,7 +76,7 @@ with st.form(key='params_for_api_pdf'):
                 if  int(i[0][-2:]) == 16:
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
-    elif st.form_submit_button("Which SDG am I?"):
+    elif st.form_submit_button("SDG"):
         if uploaded_file is not None:
             pdf=PDFQuery(uploaded_file)
             pdf.load()
@@ -109,7 +125,7 @@ with st.form(key='params_for_api_pdf'):
             elif round(pred) == 16:
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
-    elif st.form_submit_button('Which category I am ?'):
+    elif st.form_submit_button('Category'):
         if uploaded_file is not None:
             pdf=PDFQuery(uploaded_file)
             pdf.load()
@@ -142,11 +158,11 @@ with st.form(key='params_for_api_pdf'):
 
 st.header("",divider="rainbow")
 
-st.title("Paste an article :pencil:")
+st.markdown("## Paste an article :pencil:")
 
 with st.form(key='params_for_api'):
     text = st.text_input("Article")
-    if st.form_submit_button('The best 3 SDGs the article corresponds to ?'):
+    if st.form_submit_button('3 SDGs & Proba'):
         params = dict(text=text)
         sdg_classifier_api_url2 = f"https://sdgclassifier-bw4yive63a-od.a.run.app/predict_proba?{text}"
         response = requests.get(sdg_classifier_api_url2,params=params)
@@ -154,10 +170,8 @@ with st.form(key='params_for_api'):
         prediction={key[:-1]+str(int(key[-1])+1):round(proba,3) for key,proba in prediction.items()}
         k = Counter(prediction)
         high = k.most_common(3)
-        #col1, col2, col3 = st.columns(3)
         for i in high:
-            st.write(i[0]," :",round(i[1],2)*100,"%")
-            st.write(i[0][-2:])
+            st.markdown(f"## {i[0]} :{round(i[1],2)*100}%")
             if int(i[0][-2:]) ==5:
                 st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png")
             if int(i[0][-2:]) ==1:
@@ -192,7 +206,7 @@ with st.form(key='params_for_api'):
                 st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
 
-    elif st.form_submit_button('Which SDG am I ? '):
+    elif st.form_submit_button('SDG'):
 
         params = dict(text=text)
         sdg_classifier_api_url = f"https://sdgclassifier-bw4yive63a-od.a.run.app/predict?{text}"
@@ -204,7 +218,7 @@ with st.form(key='params_for_api'):
         pred = prediction['The text is talking about SDG:']
 
         if round(pred) == 15:
-            st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png")
+            st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png",width=160)
 
         elif round(pred) == 1:
             st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9KeYUomO4E0EqXT24XUypQ.png")
@@ -240,9 +254,9 @@ with st.form(key='params_for_api'):
             st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
         st.header(f'This text should be classified in SDG {round(pred)}')
+        #st.image(dico[round(pred)])
 
-
-    elif st.form_submit_button('Which ESG I am ? '):
+    elif st.form_submit_button('Category'):
         params = dict(text=text)
         sdg_classifier_api_url3 = f"https://sdgclassifier-bw4yive63a-od.a.run.app/predict_category?{text}"
         response = requests.get(sdg_classifier_api_url3,params=params)
