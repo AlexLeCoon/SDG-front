@@ -111,6 +111,36 @@ with st.form(key='params_for_api_pdf'):
                 if  i[0][-2:] =="16":
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
+    elif st.form_submit_button('Which category I am ? '):
+        if uploaded_file is not None:
+        #if st.form_submit_button("which SDG am I?"):
+            pdf=PDFQuery(uploaded_file)
+            pdf.load()
+            text_elements=pdf.pq("LTTextLineHorizontal")
+            text=[t.text for t in text_elements]
+            text = " ".join(text)
+            params = {'text':text}
+            sdg_classifier_api_url3 = f"https://sdgclassifier-bw4yive63a-od.a.run.app/predict_category?{text}"
+            response = requests.get(sdg_classifier_api_url3,params=params)
+            prediction = response.json()
+            pred = prediction["This text most probably belongs to the following category:"]
+            if pred == 1:
+                results = "Economy"
+            elif pred == 2:
+                results = "Environement"
+            else:
+                results = "Societal"
+
+        st.header(f'This text should be classified in the category {results}')
+
+        if pred == 3:
+            st.image("https://www.pngall.com/wp-content/uploads/9/Society-PNG-300x225.png")
+
+        elif round(pred) == 1:
+            st.image("https://www.pngall.com/wp-content/uploads/1/Save-Money-300x225.png")
+
+        elif round(pred) == 2:
+            st.image("https://www.pngall.com/wp-content/uploads/2017/05/Save-Earth-PNG-Picture.png")
 
 
 st.header("",divider="rainbow")
