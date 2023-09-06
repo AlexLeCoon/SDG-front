@@ -10,7 +10,7 @@ st.title("Using a PDF :open_file_folder:")
 
 with st.form(key='params_for_api_pdf'):
     uploaded_file = st.file_uploader("Choose a file", type= 'pdf')
-    if st.form_submit_button("Upload pdf"):
+    if st.form_submit_button("Which SDG am I?"):
         if uploaded_file is not None:
         #if st.form_submit_button("which SDG am I?"):
             pdf=PDFQuery(uploaded_file)
@@ -76,7 +76,6 @@ with st.form(key='params_for_api_pdf'):
             prediction={key[:-1]+str(int(key[-1])+1):round(proba,3) for key,proba in prediction.items()}
             k = Counter(prediction)
             high = k.most_common(3)
-            #col1, col2, col3 = st.columns(3)
             for i in high:
                 st.write(i[0]," :",round(i[1],2)*100,"%")
                 if i[0][-1] =="6":
