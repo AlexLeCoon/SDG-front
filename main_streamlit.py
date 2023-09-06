@@ -108,7 +108,7 @@ with st.form(key='params_for_api_pdf'):
             elif round(pred) == 16:
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
-    elif st.form_submit_button('Which category I am ? '):
+    elif st.form_submit_button('Which category I am ?'):
         if uploaded_file is not None:
             pdf=PDFQuery(uploaded_file)
             pdf.load()
