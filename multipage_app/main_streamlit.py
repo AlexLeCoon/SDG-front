@@ -4,6 +4,10 @@ import pandas as pd
 from pdfquery import PDFQuery
 from collections import Counter
 
+st.set_page_config(page_title="App page",page_icon=":recycle:")
+
+st.sidebar.success("XX")
+
 #dico = {15:"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png",
         #1:"https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9KeYUomO4E0EqXT24XUypQ.png",
         #2:"https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-02.png",
@@ -88,6 +92,7 @@ with st.form(key='params_for_api_pdf'):
             response = requests.get(sdg_classifier_api_url,params=params)
             prediction = response.json()
             pred = prediction['The text is talking about SDG:']
+            st.header(f'This text should be classified in SDG {round(pred)}')
 
             if round(pred) == 15:
                     st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png")
@@ -144,7 +149,7 @@ with st.form(key='params_for_api_pdf'):
             else:
                 results = "Societal"
 
-        st.header(f'This text should be classified in the category {results}')
+        st.header(f'This text probably belongs to the category: {results}')
 
         if pred == 3:
             st.image("https://www.pngall.com/wp-content/uploads/9/Society-PNG-300x225.png")
@@ -217,6 +222,8 @@ with st.form(key='params_for_api'):
 
         pred = prediction['The text is talking about SDG:']
 
+        st.header(f'This text should be classified in SDG {round(pred)}')
+
         if round(pred) == 15:
             st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png",width=160)
 
@@ -253,8 +260,6 @@ with st.form(key='params_for_api'):
         elif round(pred) == 16:
             st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
-        st.header(f'This text should be classified in SDG {round(pred)}')
-        #st.image(dico[round(pred)])
 
     elif st.form_submit_button('Category'):
         params = dict(text=text)
@@ -269,7 +274,7 @@ with st.form(key='params_for_api'):
         else:
             results = "Societal"
 
-        st.header(f'This text should be classified in the category {results}')
+        st.header(f'This text probably belongs to the category: {results}')
 
         if pred == 3:
             st.image("https://www.pngall.com/wp-content/uploads/9/Society-PNG-300x225.png")
