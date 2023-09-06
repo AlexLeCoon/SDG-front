@@ -26,38 +26,39 @@ with st.form(key='params_for_api_pdf'):
             high = k.most_common(3)
             for i in high:
                 st.write(i[0]," :",round(i[1],2)*100,"%")
-            if int(i[0][-2:]) ==5:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png")
-            if int(i[0][-2:]) ==1:
-                st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9KeYUomO4E0EqXT24XUypQ.png")
-            if int(i[0][-2:]) ==2:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-02.png")
-            if int(i[0][-2:]) ==3:
-                st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bD6Q8IDG3Ef444SAOnNiyg.png")
-            if int(i[0][-2:]) ==4:
-                st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1-A2Y3EWTX6V8ISs7zgU_Q.png")
-            if int(i[0][-2:]) ==6:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-06.png")
-            if int(i[0][-2:]) ==7:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-07.png")
-            if int(i[0][-2:]) ==8:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-08.png")
-            if int(i[0][-2:]) ==9:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-09.png")
-            if  int(i[0][-2:]) ==10:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-10.png")
-            if  int(i[0][-2:]) ==11:
-               st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-11.png")
-            if  int(i[0][-2:]) ==12:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-12.png")
-            if  int(i[0][-2:]) ==13:
-                 st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-13.png")
-            if  int(i[0][-2:]) ==14:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-14.png")
-            if  int(i[0][-2:]) ==15:
-                st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png")
-            if  int(i[0][-2:]) ==16:
-                st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
+                st.write(i[0][-2:])
+                if int(i[0][-2:]) == 5:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png")
+                if int(i[0][-2:]) == 1:
+                    st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9KeYUomO4E0EqXT24XUypQ.png")
+                if int(i[0][-2:]) == 2:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-02.png")
+                if int(i[0][-2:]) == 3:
+                    st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bD6Q8IDG3Ef444SAOnNiyg.png")
+                if int(i[0][-2:]) == 4:
+                    st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*1-A2Y3EWTX6V8ISs7zgU_Q.png")
+                if int(i[0][-2:]) == 6:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-06.png")
+                if int(i[0][-2:]) == 7:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-07.png")
+                if int(i[0][-2:]) == 8:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-08.png")
+                if int(i[0][-2:]) == 9:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-09.png")
+                if  int(i[0][-2:]) == 10:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-10.png")
+                if  int(i[0][-2:]) == 11:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-11.png")
+                if  int(i[0][-2:]) == 12:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-12.png")
+                if  int(i[0][-2:]) == 13:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-13.png")
+                if  int(i[0][-2:]) == 14:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-14.png")
+                if  int(i[0][-2:]) == 15:
+                    st.image("https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7MDLuoSaJjS-q5tZ_vJbVA.png")
+                if  int(i[0][-2:]) == 16:
+                    st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-16.png ")
 
     elif st.form_submit_button("Which SDG am I?"):
         if uploaded_file is not None:
@@ -156,6 +157,7 @@ with st.form(key='params_for_api'):
         #col1, col2, col3 = st.columns(3)
         for i in high:
             st.write(i[0]," :",round(i[1],2)*100,"%")
+            st.write(i[0][-2:])
             if int(i[0][-2:]) ==5:
                 st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png")
             if int(i[0][-2:]) ==1:
