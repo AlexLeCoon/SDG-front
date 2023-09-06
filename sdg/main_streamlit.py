@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 from pdfquery import PDFQuery
 from collections import Counter
+import numpy as np
 
 st.set_page_config(page_title="App page",page_icon=":recycle:")
 
@@ -48,7 +49,7 @@ with st.form(key='params_for_api_pdf'):
             k = Counter(prediction)
             high = k.most_common(3)
             for i in high:
-                st.markdown(f"### {i[0]} :{round(i[1],2)*100}%")
+                st.markdown(f"### {i[0]} :{np.round(i[1],2)*100}%")
                 if int(i[0][-2:]) == 5:
                     st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png",width=width)
                 if int(i[0][-2:]) == 1:
@@ -178,7 +179,7 @@ with st.form(key='params_for_api'):
         k = Counter(prediction)
         high = k.most_common(3)
         for i in high:
-            st.markdown(f"### {i[0]} :{round(i[1],2)*100}%")
+            st.markdown(f"### {i[0]} :{np.round(i[1],2)*100}%")
             if int(i[0][-2:]) ==5:
                 st.image("https://www.kit.nl/wp-content/uploads/2019/02/E_SDG-goals_icons-individual-rgb-05.png",width=width)
             if int(i[0][-2:]) ==1:
