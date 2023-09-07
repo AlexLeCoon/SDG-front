@@ -148,7 +148,7 @@ with st.form(key='params_for_api_pdf'):
             if pred == 1:
                 results = "Economy"
             elif pred == 2:
-                results = "Environement"
+                results = "Environment"
             else:
                 results = "Societal"
 
@@ -273,7 +273,7 @@ with st.form(key='params_for_api'):
         if pred == 1:
             results = "Economy"
         elif pred == 2:
-            results = "Environement"
+            results = "Environment"
         else:
             results = "Societal"
 
